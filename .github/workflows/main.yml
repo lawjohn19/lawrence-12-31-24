@@ -15,11 +15,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ github.repository }}:latest .
+          docker build -t ${{lawjohn19/lawrence-12-31-24:latest:latest}} 
 
       - name: Tag Docker image
         run: |
-          docker tag ${{ github.repository }}:latest ${{ github.repository }}:latest
+          docker tag ${{ lawjohn19/lawrence-12-31-24:latest }}:latest ${{ lawjohn19 }}:latest
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
