@@ -15,18 +15,19 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ github.lawjohn19/lawrence-12-31-24 }}:latest .
+          docker build -t ${{ github.repository }}:latest .
 
       - name: Tag Docker image
         run: |
-          docker tag ${{ github.lawjohn19/lawrence-12-31-24 }}:latest ${{ github.repository_lawjohn19 }}/docker-image:latest
+          docker tag ${{ github.repository }}:latest ${{ github.repository }}:latest
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Push Docker image to Docker Hub
+      - name: Push Docker image
         run: |
-          docker push ${{ github.repository_lawjohn19 }}/docker-image:latest
+          docker push ${{ github.repository }}:latest
+
